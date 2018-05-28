@@ -6,6 +6,7 @@ import mccode.qduprouter.Listeners.ConnectListeners.RequesterConnectListener;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 
 /**
  * Created by Will on 5/6/2018.
@@ -24,8 +25,12 @@ public class Router {
         startListeners();
 
         System.out.println("***  Router running.                 ***");
-        System.out.println("***  Press enter to exit.            ***");
-
+        System.out.println("***  Enter 'quit' to exit.           ***");
+        String input = "";
+        Scanner in = new Scanner(System.in);
+        while(input != "quit"){
+            input = in.nextLine();
+        }
         closeRouter();
         stopListeners();
     }
