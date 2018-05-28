@@ -1,4 +1,4 @@
-package mccode.qduprouter.Listeners;
+package mccode.qduprouter.Listeners.ConnectListeners;
 
 
 import mccode.qduprouter.*;
@@ -22,7 +22,13 @@ public class RequesterConnectListener extends ConnectListener {
                 Host foundHost = findProperHost(key);
                 foundHost.addRequester(newPotentialRequester);
             } catch (IOException e) {
-                e.printStackTrace();
+                if(isTerminated){
+                    System.out.println("RequestConnectListener closing due to router closing");
+                }else{
+                    System.out.println("RequestConnectListener closing due to unexpected error");
+                    e.printStackTrace();
+                }
+
             }
 
 
@@ -36,10 +42,6 @@ public class RequesterConnectListener extends ConnectListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void terminate() throws IOException {
-        server.close();
     }
 
     public Host findProperHost(String key){

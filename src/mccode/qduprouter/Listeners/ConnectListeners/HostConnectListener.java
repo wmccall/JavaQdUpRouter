@@ -1,4 +1,4 @@
-package mccode.qduprouter.Listeners;
+package mccode.qduprouter.Listeners.ConnectListeners;
 
 import mccode.qduprouter.Hosts;
 import mccode.qduprouter.Router;
@@ -19,7 +19,12 @@ public class HostConnectListener extends ConnectListener{
             try {
                 Hosts.add(new StreamIO(server.accept()));
             } catch (IOException e) {
-                e.printStackTrace();
+                if(isTerminated){
+                    System.out.println("HostConnectListener closing due to router closing");
+                }else{
+                    System.out.println("HostConnectListener closing due to unexpected error");
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -31,9 +36,5 @@ public class HostConnectListener extends ConnectListener{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void terminate() throws IOException {
-        server.close();
     }
 }

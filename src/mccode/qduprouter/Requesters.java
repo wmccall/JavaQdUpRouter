@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import static mccode.qduprouter.Utils.AddUserUtils.generateValidKey;
+
 /**
  * Created by Will on 5/6/2018.
  */
@@ -18,8 +20,14 @@ public class Requesters {
         requesters = new HashMap<>();
     }
 
-    public void add(StreamIO streamIO){
+    public void add(StreamIO streamIO, Host host){
         hostCount++;
+        String key = generateValidKey(requesters);
+        requesters.put(key, new Requester(streamIO, key, host));
+    }
+
+    public void remove(String key) throws IOException {
+        requesters.remove(key).close();
     }
 
     public void close() throws IOException {
@@ -34,5 +42,9 @@ public class Requesters {
             requestersIterator.remove();
 
         }
+    }
+
+    public HashMap getRequestersHashMap(){
+        return requesters;
     }
 }

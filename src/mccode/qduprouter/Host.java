@@ -14,7 +14,7 @@ public class Host extends User{
     }
 
     public void addRequester(StreamIO streamIO){
-        requesters.add(streamIO);
+        requesters.add(streamIO, this);
     }
 
     public void close() throws IOException {
@@ -22,4 +22,11 @@ public class Host extends User{
         streamIO.close();
     }
 
+    public Requesters getRequesters(){
+        return this.requesters;
+    }
+
+    public void removeRequester(String key) throws IOException {
+        requesters.remove(key);
+    }
 }

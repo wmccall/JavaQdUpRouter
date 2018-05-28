@@ -1,8 +1,7 @@
 package mccode.qduprouter;
 
-import mccode.qduprouter.Hosts;
-import mccode.qduprouter.Listeners.HostConnectListener;
-import mccode.qduprouter.Listeners.RequesterConnectListener;
+import mccode.qduprouter.Listeners.ConnectListeners.HostConnectListener;
+import mccode.qduprouter.Listeners.ConnectListeners.RequesterConnectListener;
 
 import java.io.IOException;
 import java.util.Iterator;
