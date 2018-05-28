@@ -1,5 +1,7 @@
 package mccode.qduprouter;
 
+import mccode.qduprouter.Listeners.MessageListeners.HostMessageListener;
+
 import java.io.IOException;
 import java.util.HashMap;
 
@@ -18,7 +20,9 @@ public class Hosts{
         if (hostMessage.equals("server:")){
             key = generateValidKey(hosts);
             System.out.println("mccode.qduprouter.Host assigned the key: " + key);
-            hosts.put(key, new Host(streamIO, key));
+            Host newHost = new Host(streamIO, key);
+            hosts.put(key, newHost);
+            new Thread(new HostMessageListener(newHost)).start();
             return true;
         }
         return false;

@@ -1,5 +1,7 @@
 package mccode.qduprouter;
 
+import mccode.qduprouter.Listeners.MessageListeners.RequesterMessageListener;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -23,7 +25,9 @@ public class Requesters {
     public void add(StreamIO streamIO, Host host){
         hostCount++;
         String key = generateValidKey(requesters);
-        requesters.put(key, new Requester(streamIO, key, host));
+        Requester newRequester = new Requester(streamIO, key, host);
+        requesters.put(key, newRequester);
+        new Thread(new RequesterMessageListener(newRequester)).start();
     }
 
     public void remove(String key) throws IOException {
