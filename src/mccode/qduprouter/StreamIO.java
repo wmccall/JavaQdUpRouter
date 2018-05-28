@@ -1,3 +1,5 @@
+package mccode.qduprouter;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,5 +27,11 @@ public class StreamIO{
 
     public void write(String message){
         out.write(message);
+    }
+
+    public void close() throws IOException {
+        in.close();
+        out.close();
+        socket.close();
     }
 }
