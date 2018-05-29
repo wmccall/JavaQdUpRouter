@@ -25,6 +25,8 @@ public class HostConnectListener extends ConnectListener{
                     System.out.println("HostConnectListener closing due to unexpected error");
                     e.printStackTrace();
                 }
+            }catch (NullPointerException e){
+
             }
         }
     }

@@ -28,7 +28,7 @@ public class Router {
         System.out.println("***  Enter 'quit' to exit.           ***");
         String input = "";
         Scanner in = new Scanner(System.in);
-        while(input != "quit"){
+        while(!input.equals("quit")){
             input = in.nextLine();
         }
         closeRouter();

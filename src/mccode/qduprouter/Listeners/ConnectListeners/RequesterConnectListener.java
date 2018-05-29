@@ -29,9 +29,9 @@ public class RequesterConnectListener extends ConnectListener {
                     e.printStackTrace();
                 }
 
+            }catch (NullPointerException e){
+
             }
-
-
         }
     }
 
