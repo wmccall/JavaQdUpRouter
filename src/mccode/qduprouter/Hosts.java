@@ -22,6 +22,7 @@ public class Hosts{
             System.out.println("mccode.qduprouter.Host assigned the key: " + key);
             Host newHost = new Host(streamIO, key);
             hosts.put(key, newHost);
+            newHost.write(key + "\n");
             new Thread(new HostMessageListener(newHost)).start();
             return true;
         }
