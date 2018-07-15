@@ -28,7 +28,7 @@ public class RequesterConnectListener extends ConnectListener {
                     System.out.println("RequestConnectListener closing due to unexpected error");
                     e.printStackTrace();
                 }
-
+                break;
             }catch (NullPointerException e){
 
             }
