@@ -7,8 +7,8 @@ hooks:
   BeforeInstall:
     - location: scripts/before-install.sh
       runas: root
-    - location: scripts/install-dependencies.sh
-      runas: root
+#    - location: scripts/install-dependencies.sh
+#      runas: root
   AfterInstall:
     - location: scripts/install.sh
       runas: root
