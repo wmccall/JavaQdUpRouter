@@ -1,8 +1,10 @@
 #!/bin/bash
 cd /home/ec2-user/raw
-sudo yum -y install ant
+sudo yum -y install ant gcc
+
 mkdir dep
 cd dep
+
 mkdir LIBEVENT
 cd LIBEVENT
 curl -OL https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
@@ -12,6 +14,7 @@ sudo ./configure --prefix=/usr/local
 sudo make
 sudo make install
 cd ../..
+
 mkdir TMUX
 cd TMUX
 curl -OL https://github.com/tmux/tmux/releases/download/2.0/tmux-2.0.tar.gz
@@ -21,4 +24,5 @@ sudo LDFLAGS="-L/usr/local/lib -Wl,-rpath=/usr/local/lib" ./configure --prefix=/
 sudo make
 sudo make install
 cd ../../..
+
 ant clean compile jar
