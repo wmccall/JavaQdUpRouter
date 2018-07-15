@@ -52,6 +52,7 @@ public class RequesterMessageListener implements Runnable{
         try {
             requester.getHost().removeRequester(requester.getKey());
         } catch (IOException e) {
+            System.out.print("Error while removing requester from message litener:");
             e.printStackTrace();
         }
     }

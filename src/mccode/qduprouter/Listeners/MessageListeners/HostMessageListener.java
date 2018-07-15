@@ -61,6 +61,7 @@ public class HostMessageListener implements Runnable{
         try {
             Hosts.removeHost(host.getKey());
         } catch (IOException e) {
+            System.out.print("Error while removing host from message listener:");
             e.printStackTrace();
         }
     }

@@ -31,8 +31,8 @@ public class Router {
         while(!input.equals("quit")){
             input = in.nextLine();
         }
-        closeRouter();
         stopListeners();
+        closeRouter();
     }
 
     static void startListeners()
@@ -75,11 +75,13 @@ public class Router {
         try {
             hostConnectListener.terminate();
         } catch (IOException e) {
+            System.out.print("HostConnectListener error:");
             e.printStackTrace();
         }
         try {
             requesterConnectListener.terminate();
         } catch (IOException e) {
+            System.out.print("RequesterConnectListener error:");
             e.printStackTrace();
         }
     }
