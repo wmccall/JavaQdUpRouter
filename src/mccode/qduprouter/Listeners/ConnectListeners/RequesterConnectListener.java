@@ -40,6 +40,7 @@ public class RequesterConnectListener extends ConnectListener {
         try {
             listen();
         } catch (IOException e) {
+            System.out.println("RequesterConnectListener cannot bind to " + Router.requesterPort);
             e.printStackTrace();
         }
     }

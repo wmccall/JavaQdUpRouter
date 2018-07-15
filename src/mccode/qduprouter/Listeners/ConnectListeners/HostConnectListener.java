@@ -36,6 +36,7 @@ public class HostConnectListener extends ConnectListener{
         try {
             listen();
         } catch (IOException e) {
+            System.out.println("HostConnectListener cannot bind to " + Router.hosterPort);
             e.printStackTrace();
         }
     }
