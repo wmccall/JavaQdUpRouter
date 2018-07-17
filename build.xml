@@ -18,6 +18,15 @@
         </jar>
     </target>
 
+    <target name="war">
+        <mkdir dir="build/war"/>
+        <jar destfile="build/jar/JavaQdUpRouter.war" basedir="build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="mccode.qduprouter.Router"/>
+            </manifest>
+        </jar>
+    </target>
+
     <target name="run">
         <java jar="build/jar/JavaQdUpRouter.jar" fork="true"/>
     </target>
