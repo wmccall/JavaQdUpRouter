@@ -14,6 +14,7 @@ public class AddUserUtils {
         for(int i = 0; i < 6; i++){
             key += "" + alphanumeric[r.nextInt()*33];
         }
+        System.out.println(key);
         return key;
     }
 
