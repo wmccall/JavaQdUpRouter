@@ -12,7 +12,7 @@ public class AddUserUtils {
     public static String generateRandomKey(){
         String key = "";
         for(int i = 0; i < 6; i++){
-            key += "" + alphanumeric[r.nextInt()*33];
+            key += "" + alphanumeric[r.nextInt(34)];
         }
         System.out.println(key);
         return key;
