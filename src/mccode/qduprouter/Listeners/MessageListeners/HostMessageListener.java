@@ -32,7 +32,7 @@ public class HostMessageListener implements Runnable{
                 }
                 if(message == null){
                     System.out.println("Host: " + host.getKey() + " lost connection");
-                    return;
+                    break;
                 }
                 if(message == "Ping\n"){
 

@@ -17,7 +17,7 @@ public class StreamIO{
 
     public StreamIO(Socket socket) throws IOException {
         this.socket = socket;
-        this.out = new PrintWriter(socket.getOutputStream());
+        this.out = new PrintWriter(socket.getOutputStream(), true);
         this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
@@ -26,6 +26,7 @@ public class StreamIO{
     }
 
     public void write(String message){
+        System.out.println("StreamIO: Writing: " + message);
         out.write(message);
     }
 
