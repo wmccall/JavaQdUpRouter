@@ -27,6 +27,7 @@ public class Requesters {
         String key = generateValidKey(requesters);
         Requester newRequester = new Requester(streamIO, key, host);
         requesters.put(key, newRequester);
+        newRequester.write(key);
         new Thread(new RequesterMessageListener(newRequester)).start();
     }
 

@@ -16,8 +16,9 @@ public class RequesterConnectListener extends ConnectListener {
         server = new ServerSocket(Router.requesterPort);
 
         while (true) {
+            StreamIO newPotentialRequester = null;
             try {
-                StreamIO newPotentialRequester = new StreamIO(server.accept());
+                newPotentialRequester = new StreamIO(server.accept());
                 String key = getKey(newPotentialRequester);
                 Host foundHost = findProperHost(key);
                 foundHost.addRequester(newPotentialRequester);
@@ -30,7 +31,7 @@ public class RequesterConnectListener extends ConnectListener {
                 }
                 break;
             }catch (NullPointerException e){
-
+                newPotentialRequester.write("NA");
             }
         }
     }
@@ -46,10 +47,15 @@ public class RequesterConnectListener extends ConnectListener {
     }
 
     public Host findProperHost(String key){
-        return Hosts.getHost(key);
+        Host foundHost = Hosts.getHost(key);
+        if (foundHost != null)
+            System.out.println("Host found with key: " + key);
+        return foundHost;
     }
 
     public String getKey(StreamIO streamIO) throws IOException {
-        return streamIO.readLine();
+        String key = streamIO.readLine();
+        System.out.println("Got key from potential Requester: " + key);
+        return key;
     }
 }
