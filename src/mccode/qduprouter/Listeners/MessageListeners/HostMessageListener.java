@@ -26,15 +26,16 @@ public class HostMessageListener implements Runnable{
             try
             {
                 message = host.read();
-                if(message == "Quit\n"){
+                System.out.println("Message from host: " + message);
+                if(message.equals("Quit\n")){
                     System.out.println("Host: " + host.getKey() + " Quit");
                     break;
                 }
-                if(message == null){
+                else if(message == null){
                     System.out.println("Host: " + host.getKey() + " lost connection");
                     break;
                 }
-                if(message == "Ping\n"){
+                else if(message.equals("Ping\n")){
 
                 }
                 else

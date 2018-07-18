@@ -23,15 +23,16 @@ public class RequesterMessageListener implements Runnable{
             try
             {
                 message = requester.read();
-                if(message == "Quit\n"){
+                System.out.println("Message from requester: " + message);
+                if(message.equals("Quit\n")){
                     System.out.println("Requester: " + requester.getKey() + " Quit");
                     break;
                 }
-                if(message == null){
+                else if(message == null){
                     System.out.println("Requester: " + requester.getKey() + " lost connection");
                     return;
                 }
-                if(message == "Ping\n"){
+                else if(message.equals("Ping\n")){
 
                 }
                 else
