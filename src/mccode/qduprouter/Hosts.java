@@ -22,7 +22,7 @@ public class Hosts{
             Host newHost = new Host(streamIO, key);
             System.out.println("Host assigned the key: " + key);
             hosts.put(key, newHost);
-            newHost.write(key + "\n");
+            newHost.write(key);
             new Thread(new HostMessageListener(newHost)).start();
             return true;
         }
