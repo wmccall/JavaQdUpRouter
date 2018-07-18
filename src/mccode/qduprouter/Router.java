@@ -30,6 +30,7 @@ public class Router {
         Scanner in = new Scanner(System.in);
         while(!input.equals("quit")){
             input = in.nextLine();
+            checkCommand(input);
         }
         stopListeners();
         closeRouter();
@@ -83,6 +84,12 @@ public class Router {
         } catch (IOException e) {
             System.out.print("RequesterConnectListener error:");
             e.printStackTrace();
+        }
+    }
+
+    public static void checkCommand(String input){
+        if(input.equals("lh") || input.equals("list host")){
+            Hosts.printHosts();
         }
     }
 }

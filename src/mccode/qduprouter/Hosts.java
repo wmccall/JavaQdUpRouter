@@ -15,18 +15,22 @@ public class Hosts{
 
     public static boolean add(StreamIO streamIO) throws IOException {
         String hostMessage = streamIO.readLine();
-        System.out.println("mccode.qduprouter.Host message: " + hostMessage);
+        System.out.println("Host message: " + hostMessage);
         String key = "";
         if (hostMessage.equals("server:")){
             key = generateValidKey(hosts);
-            System.out.println("mccode.qduprouter.Host assigned the key: " + key);
             Host newHost = new Host(streamIO, key);
+            System.out.println("Host assigned the key: " + key);
             hosts.put(key, newHost);
             newHost.write(key + "\n");
             new Thread(new HostMessageListener(newHost)).start();
             return true;
         }
         return false;
+    }
+
+    public static void printHosts(){
+        hosts.forEach((k, v) -> System.out.println("Host: " + k));
     }
 
     public static Host getHost(String key){
