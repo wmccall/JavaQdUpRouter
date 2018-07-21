@@ -30,7 +30,10 @@ public class Hosts{
     }
 
     public static void printHosts(){
-        hosts.forEach((k, v) -> System.out.println("Host: " + k));
+        hosts.forEach((k, v) -> {
+            System.out.println("Host: " + k);
+            v.printRequesters();
+        });
     }
 
     public static Host getHost(String key){

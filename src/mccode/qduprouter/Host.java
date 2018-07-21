@@ -29,4 +29,10 @@ public class Host extends User{
     public void removeRequester(String key) throws IOException {
         requesters.remove(key);
     }
+
+    public void printRequesters(){
+        requesters.requesters.forEach((k, v) -> {
+            System.out.println("Requester: " + k);
+        });
+    }
 }
