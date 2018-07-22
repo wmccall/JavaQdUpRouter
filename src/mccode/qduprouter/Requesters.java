@@ -28,6 +28,7 @@ public class Requesters {
         Requester newRequester = new Requester(streamIO, key, host);
         requesters.put(key, newRequester);
         newRequester.write(key);
+        newRequester.write(host.getKey());
         new Thread(new RequesterMessageListener(newRequester)).start();
     }
 
